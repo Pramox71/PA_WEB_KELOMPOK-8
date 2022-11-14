@@ -96,7 +96,7 @@
                 if ($_SESSION['priv'] == 'ADMIN') {
                     echo("<a href='Admin.php'>Kelola Data</a>");
                 }else if($_SESSION['priv'] == 'member'){
-                    echo("<a href='user.php'>Data Diri</a>");
+                    echo("<a href='Biodata.php'>Data Diri</a>");
                 }
                 ?>
           </li>
@@ -120,19 +120,19 @@
                 <form action="" method="POST" class="login-email">
                     <label>Nama Pengguna</label>
                     <br>
-                    <input type="text" placeholder="<?php echo $data_1['Nama']; ?>" value="<?php echo $data_1['Nama']; ?>"name="nama"  require>
+                    <input type="text" placeholder="<?php if (mysqli_num_rows($cek)==0){echo'Nama';}else{echo $data_1['Nama'];} ?>" value="<?php if (mysqli_num_rows($cek)==0){echo'';}else{echo $data_1['Nama'];} ?>"name="nama"  require>
                     <br>
                     <label>Umur</label>
                     <br>
-                    <input type="text" placeholder="<?php echo $data_1['Umur']; ?>" value="<?php echo $data_1['Umur']; ?>" name="umur" require>
+                    <input type="text" placeholder="<?php if (mysqli_num_rows($cek)==0){echo'Umur';}else{echo $data_1['Umur'];} ?>" value="<?php if (mysqli_num_rows($cek)==0){echo'';}else{echo $data_1['Umur'];} ?>" name="umur" require>
                     <br>
                     <label>Alamat</label>
                     <br>
-                    <input type="text" placeholder="<?php echo $data_1['Alamat']; ?>" value="<?php echo $data_1['Alamat']; ?>" name="alamat" require>
+                    <input type="text" placeholder="<?php if (mysqli_num_rows($cek)==0){echo'Alamat';}else{echo $data_1['Alamat'];} ?>" value="<?php if (mysqli_num_rows($cek)==0){echo'';}else{echo $data_1['Alamat'];} ?>" name="alamat" require>
                     <br>
                     <label>No Telepon</label>
                     <br>
-                    <input type="number" placeholder="<?php echo $data_1['No_Hp']; ?>" value="0<?php echo $data_1['No_Hp']; ?>" name="HP" require>
+                    <input type="number" placeholder="<?php if (mysqli_num_rows($cek)==0){echo'No. Hp';}else{echo $data_1['No_Hp'];} ?>" value="<?php if (mysqli_num_rows($cek)==0){echo'';}else{echo $data_1['No_Hp'];} ?>" name="HP" require>
                     <br>
                     <button name="submit">Simpan Data</button>
                 </form>
