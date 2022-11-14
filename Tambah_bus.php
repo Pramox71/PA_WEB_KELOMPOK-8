@@ -99,10 +99,10 @@
                     <label>Tujuan Bus</label>
                     <br>
                     <input type="text" placeholder="Tujuan Bus" name="tujuan" require>
-                    <label>Harga/Malam</label>
+                    <label>Harga</label>
                     <br>
                     <input type="number" placeholder="Rp. xx.xxx" name="harga" require>
-                    <label>Gambar Hotel</label>
+                    <label>Gambar</label>
                     <br>
                     <input type="file" name="gambar" accept="img/*" required>
                     <button name="submit">Tambah Data</button>
