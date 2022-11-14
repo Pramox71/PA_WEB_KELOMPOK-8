@@ -71,6 +71,8 @@
               <h2 class="harga">Rp. <?php echo number_format($data['Harga'],0,'.','.');?></h2>
               <small class="alamat"><?php echo $data['Alamat_Hotel'];echo', '; echo $data['Daerah_Hotel'];?></small>
               <br>
+              <small>Waktu : <?php echo $data['Waktu'];?></small>
+              <br>
             </div>
           </div>
           <?php endforeach;?>
