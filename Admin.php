@@ -76,7 +76,7 @@
           </a>
           <a href="Hotel.php" class="btn-order">
             <div class="btn-block">
-              Kelola Data hotel
+              Kelola Data Hotel
             </div>
           </a>
           <a href="Konfirmasi_Bus.php" class="btn-order">
