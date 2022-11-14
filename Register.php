@@ -7,7 +7,7 @@
         $password = $_POST['password'];
         $konfirmasi = $_POST['konfirmasi'];
         $jenis_akun = 'member';
-        $query = mysqli_query($db, "SELECT * FROM akun_travel WHERE username = '$user'");
+        $query = mysqli_query($db, "SELECT * FROM akun_travel WHERE username = '$nama'");
         if (mysqli_fetch_assoc($query)){
             echo "
             <script>

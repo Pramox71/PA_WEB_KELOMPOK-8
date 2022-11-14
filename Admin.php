@@ -79,6 +79,16 @@
               Kelola Data hotel
             </div>
           </a>
+          <a href="Konfirmasi_Bus.php" class="btn-order">
+            <div class="btn-block">
+              Kelola Data Pemesanan Bus
+            </div>
+          </a>
+          <a href="Konfirmasi_Hotel.php" class="btn-order">
+            <div class="btn-block">
+              Kelola Data Pemesanan Hotel
+            </div>
+          </a>
         </div>
       </div>
     </div>

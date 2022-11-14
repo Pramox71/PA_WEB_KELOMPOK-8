@@ -1,9 +1,7 @@
 <?php session_start(); 
-    if ($_SESSION['priv'] != 'ADMIN'){
-      header("Location: ../");
-    }
     require "Koneksi.php";
-    $result = mysqli_query($db, "SELECT ID_Bus, Nama_Bus AS nama, Daerah_Terminal AS daerah, Tujuan, Harga, Gambar FROM bus");
+    
+    $result = mysqli_query($db, "SELECT * FROM transaksi JOIN biodata ON biodata.ID_User=transaksi.ID_User JOIN bus ON bus.ID_Bus=transaksi.ID_Bus");
     $bus = [];
     while ($row = mysqli_fetch_assoc($result)){
       $bus[] = $row;    
@@ -15,8 +13,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styling/tambah.css">
-    <title>Kelola Data</title>
+    <link rel="stylesheet" href="Styling/Konfirm.css">
+    <title>Riwayat Transaksi</title>
 </head>
 <body>
 <nav>
@@ -68,24 +66,15 @@
               <img src="Bus_img/<?= $data['Gambar'];?>" class ="img"/>
             </div>
             <div class="content-text">
-              <h2><?php echo $data['nama'];?></h2>
+              <h2><?php echo $data['Nama_Bus'];?></h2>
+              <h2>Pemesan : <?php echo $data['Nama'];?><h2>
+              <h2>Status  : <?php echo $data['Status_Pesan'];?></h2>
               <h2 class="harga">Rp. <?php echo number_format($data['Harga'],0,'.','.');?></h2>
-              <small class="alamat"><?php echo $data['daerah'];echo' Tujuan '; echo $data['Tujuan'];?></small>
+              <small class="alamat"><?php echo $data['Daerah_Terminal'];echo' Tujuan '; echo $data['Tujuan'];?></small>
               <br>
-              <div class="btn-block">
-                <a href="Edit.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" class="btn-order">Edit</a>
-              </div>
-              <div class="btn-block">
-                <a href="hapus.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" onclick = "return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn-order">Hapus</a>
-              </div>
             </div>
           </div>
           <?php endforeach;?>
-          <div class="card">
-              <div class="btn-block">
-                <a href="Tambah_bus.php" class="btn-order">Tambah Data</a>
-              </div>
-          </div>
         </div>
       </div>
     </div>

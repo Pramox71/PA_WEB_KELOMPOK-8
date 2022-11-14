@@ -69,7 +69,7 @@
             </div>
             <div class="content-text">
               <h2><?php echo $data['nama'];?></h2>
-              <h2 class="harga">Rp. <?php echo $data['Harga'];?></h2>
+              <h2 class="harga">Rp. <?php echo number_format($data['Harga'],0,'.','.');?></h2>
               <small class="alamat"><?php echo $data['alamat'];echo', '; echo $data['daerah'];?></small>
               <br>
               <div class="btn-block">

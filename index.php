@@ -35,8 +35,10 @@
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#aboutus">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#team">Team</a></li>
-          <li><a href="hotel.php">Hotel</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
           <li><?php
             if (isset($_SESSION['username'])){
               echo "<a href='Logout.php'>Log Out</a>";
@@ -48,9 +50,17 @@
                 if ($_SESSION['priv'] == 'ADMIN') {
                     echo("<a href='Admin.php'>Kelola Data</a>");
                 }else if($_SESSION['priv'] == 'member'){
-                    echo("<a href='user.php'>Data Diri</a>");
+                    echo("<a href='Biodata.php'>Data Diri</a>");
                 }
                 ?>
+          </li>
+          <li><?php
+                if ($_SESSION['priv'] == 'member') {
+                  echo("<a href='Pemesanan.php'>Pesan</a>");
+                }
+                ?>
+          </li>
+          <li>
           <?php
           if (isset($_SESSION['username'])){
             $user = $_SESSION['username'];

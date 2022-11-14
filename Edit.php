@@ -30,7 +30,7 @@
         $tmp = $_FILES['gambar']['tmp_name'];
         if($Jenis == 'bus'){
             if(move_uploaded_file($tmp, 'Bus_img/'.$gambar_new)){
-                $sql = "UPDATE bus SET Nama_Bus = '$nama', Daerah_Terminal = '$alamat_1', Tujuan = '$alamat_2', Harga = '$Harga', Gambar = '$gambar_new')";
+                $sql = "UPDATE bus SET Nama_Bus = '$nama', Daerah_Terminal = '$alamat_1', Tujuan = '$alamat_2', Harga = '$Harga', Gambar = '$gambar_new'";
                 $result = mysqli_query($db, $sql);
                 if ($result){
                     echo

@@ -1,12 +1,9 @@
 <?php session_start(); 
-    if ($_SESSION['priv'] != 'ADMIN'){
-      header("Location: ../");
-    }
     require "Koneksi.php";
-    $result = mysqli_query($db, "SELECT ID_Bus, Nama_Bus AS nama, Daerah_Terminal AS daerah, Tujuan, Harga, Gambar FROM bus");
-    $bus = [];
+    $result = mysqli_query($db, "SELECT * FROM transaksi JOIN biodata ON biodata.ID_User=transaksi.ID_User JOIN hotel ON hotel.ID_Hotel=transaksi.ID_Hotel");
+    $hotel = [];
     while ($row = mysqli_fetch_assoc($result)){
-      $bus[] = $row;    
+      $hotel[] = $row;    
     }
 ?>
 <!DOCTYPE html>
@@ -15,14 +12,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Styling/tambah.css">
+    <link rel="stylesheet" href="Styling/Konfirm.css">
     <title>Kelola Data</title>
 </head>
 <body>
 <nav>
     <div class="layar-dalam">
       <div class="logo">
-        <a href=""><img src="asset/bus.png" class="hitam"/></a>
+        <a href=""><img src="asset/hotel.png" class="hitam"/></a>
       </div>
       <div class="menu">
         <a href="#" class="tombol-menu">
@@ -62,30 +59,21 @@
   <div class="layar-penuh">
     <div class="tampilan">
         <div class="posisi">
-          <?php foreach ($bus as $data):?>
+          <?php foreach ($hotel as $data):?>
           <div class="card">
             <div class="img-card">
-              <img src="Bus_img/<?= $data['Gambar'];?>" class ="img"/>
+              <img src="Hotel_img/<?= $data['Gambar'];?>" class ="img"/>
             </div>
             <div class="content-text">
-              <h2><?php echo $data['nama'];?></h2>
+            <h2><?php echo $data['Nama_Hotel'];?></h2>
+              <h2>Pemesan : <?php echo $data['Nama'];?><h2>
+              <h2>Status  : <?php echo $data['Status_Pesan'];?></h2>
               <h2 class="harga">Rp. <?php echo number_format($data['Harga'],0,'.','.');?></h2>
-              <small class="alamat"><?php echo $data['daerah'];echo' Tujuan '; echo $data['Tujuan'];?></small>
+              <small class="alamat"><?php echo $data['Alamat_Hotel'];echo', '; echo $data['Daerah_Hotel'];?></small>
               <br>
-              <div class="btn-block">
-                <a href="Edit.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" class="btn-order">Edit</a>
-              </div>
-              <div class="btn-block">
-                <a href="hapus.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" onclick = "return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn-order">Hapus</a>
-              </div>
             </div>
           </div>
           <?php endforeach;?>
-          <div class="card">
-              <div class="btn-block">
-                <a href="Tambah_bus.php" class="btn-order">Tambah Data</a>
-              </div>
-          </div>
         </div>
       </div>
     </div>

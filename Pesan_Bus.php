@@ -1,7 +1,4 @@
 <?php session_start(); 
-    if ($_SESSION['priv'] != 'ADMIN'){
-      header("Location: ../");
-    }
     require "Koneksi.php";
     $result = mysqli_query($db, "SELECT ID_Bus, Nama_Bus AS nama, Daerah_Terminal AS daerah, Tujuan, Harga, Gambar FROM bus");
     $bus = [];
@@ -73,19 +70,11 @@
               <small class="alamat"><?php echo $data['daerah'];echo' Tujuan '; echo $data['Tujuan'];?></small>
               <br>
               <div class="btn-block">
-                <a href="Edit.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" class="btn-order">Edit</a>
-              </div>
-              <div class="btn-block">
-                <a href="hapus.php?id=<?php echo $data['ID_Bus'];?>&jenis=bus" onclick = "return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn-order">Hapus</a>
+                <a href="Transaksi.php?id=<?php echo $data['ID_Bus'];?>&harga=<?php echo $data['Harga'];?>&jenis=bus" onclick = "return confirm('Apakah Anda Yakin memesan Hotel <?php echo $data['nama']; ?>?')" class="btn-order">Pesan</a>
               </div>
             </div>
           </div>
           <?php endforeach;?>
-          <div class="card">
-              <div class="btn-block">
-                <a href="Tambah_bus.php" class="btn-order">Tambah Data</a>
-              </div>
-          </div>
         </div>
       </div>
     </div>

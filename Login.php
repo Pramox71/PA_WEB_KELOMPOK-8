@@ -8,8 +8,10 @@
         $result = mysqli_fetch_assoc($query);
         $username = $result['username'];
         $akun = $result['Jenis_akun'];
+        $ID = $result['ID'];
         if (password_verify($password, $result['password'])){
             $_SESSION['username'] = $user;
+            $_SESSION['ID'] = $ID;
             $_SESSION['priv'] = $akun;
             echo "
             <script>
