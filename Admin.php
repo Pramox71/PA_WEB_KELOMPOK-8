@@ -1,5 +1,13 @@
 <?php session_start(); 
+    if ($_SESSION['priv'] != 'ADMIN'){
+      header("Location: ../");
+    }
     require "Koneksi.php";
+    $result = mysqli_query($db, "SELECT ID_Hotel, Nama_Hotel AS nama, Alamat_Hotel AS alamat, Daerah_Hotel AS daerah, Harga, Gambar FROM hotel");
+    $hotel = [];
+    while ($row = mysqli_fetch_assoc($result)){
+      $hotel[] = $row;    
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,32 +65,30 @@
     </div>
   </nav>
   <div class="layar-penuh">
-    <header id="home">
-      <img src="asset/blog1.jpg" width="100%">
-    </header>
-    <div class="posisi">
-      <div class="card">
-        <div class="img-card">
-          <img src="asset/hotel-1.jpg" class ="img"/>
-        </div>
-        <div class="content-text">
-          <h2>Hotel Maxwell</h2>
-          <h2 class="harga">Rp. 250.000/Malam</h2>
-          <small class="alamat">Jl. Kusuma Bangsa, Bali</small>
-          <br>
-          <div class="btn-block">
-            <a href="Edit.php" class="btn-order">Edit</a>
-          </div>
-          <div class="btn-block">
-            <a href="hapus.php" class="btn-order">Hapus</a>
-          </div>
+    <div class="tampilan">
+      <img src="asset/admin.png">
+      <div class="posisi">
+        <div class="card">
+        <a href="Bus.php" class="btn-order">
+            <div class="btn-block">
+              Kelola Data Bus
+            </div>
+          </a>
+          <a href="Hotel.php" class="btn-order">
+            <div class="btn-block">
+              Kelola Data hotel
+            </div>
+          </a>
         </div>
       </div>
-      <div class="card">
-          <div class="btn-block">
-            <a href="Tambah.php" class="btn-order">Tambah Data</a>
-          </div>
+    </div>
+    <footer id="contact">
+      <div class="layar-dalam">
+        <div class="copy">
+          © Copyright, Kelompok 8 Kelas B'21 Universitas Mulawarman
+        </div>
       </div>
+    </footer>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="admin.js"></script>
